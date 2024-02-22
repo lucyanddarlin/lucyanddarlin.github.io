@@ -1,0 +1,368 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <!-- Website mata -->
+<meta charset="UTF-8" />
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+
+<!-- Disable transformation -->
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+<meta name="theme-color" content="#f8f5ec" />
+<meta name="msapplication-navbutton-color" content="#f8f5ec">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="#f8f5ec">
+
+<!-- Website description -->
+
+<meta name="description" content="nest-分片上传" />
+
+
+<!-- Website keywords -->
+
+<meta name="keywords" content="nest, Hexo" />
+
+
+
+
+<!-- Website rss -->
+
+<link rel="alternate" href="/default" title="Hexo" >
+
+
+<!-- Website favicon -->
+
+<link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=3.0.0" />
+
+
+<!-- Canonical, good for google search engine -->
+<link rel="canonical" href="http://example.com/2024/02/22/nest-分片上传/" />
+
+<!-- Fancybox styling -->
+
+<link rel="stylesheet" type="text/css" href="/lib/fancybox/jquery.fancybox.css" />
+
+
+<!-- MathJax (LaTeX) support -->
+
+
+<!-- Theme styling -->
+<link rel="stylesheet" type="text/css" href="/css/style.css?v=3.0.0" />
+
+<!-- Analytics and push -->
+
+
+
+  
+
+
+
+<!-- LeanCloud Counter -->
+
+
+<script>
+  window.config = {"leancloud":{"app_id":null,"app_key":null,"server_url":null,"cdn":null},"toc":false,"fancybox":true,"latex":false};
+</script>
+  
+  <title>nest-分片上传 - Hexo</title>
+
+<meta name="generator" content="Hexo 7.1.1"></head>
+
+<body>
+  <div class="scrollPercentage"></div>
+  <div id="mobile-navbar" class="mobile-navbar">
+  <div class="mobile-header-logo">
+    <a href="/." class="logo">Hexo</a>
+  </div>
+  <div class="mobile-navbar-icon">
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+</div>
+
+<nav id="mobile-menu" class="mobile-menu slideout-menu">
+  <ul class="mobile-menu-list">
+    
+    <a href="/">
+      <li class="mobile-menu-item">
+        
+        
+        Home              </li>
+    </a>
+    
+    <a href="/tags/">
+      <li class="mobile-menu-item">
+        
+        
+        Tags              </li>
+    </a>
+    
+    <a href="/categories/">
+      <li class="mobile-menu-item">
+        
+        
+        Categories              </li>
+    </a>
+    
+    <a href="/about/">
+      <li class="mobile-menu-item">
+        
+        
+        About              </li>
+    </a>
+    
+  </ul>
+</nav>
+  <div class="container" id="mobile-panel">
+    <header id="header" class="header">
+      <div class="logo-wrapper">  
+  <a href="/." class="logo">Hexo</a>  
+</div>  
+  
+<nav class="site-navbar">  
+    
+    <ul id="menu" class="menu">  
+        
+        <li class="menu-item">  
+          <a class="menu-item-link" href="/">  
+              
+              
+              Home  
+              
+          </a>  
+        </li>  
+        
+        <li class="menu-item">  
+          <a class="menu-item-link" href="/tags/">  
+              
+              
+              Tags  
+              
+          </a>  
+        </li>  
+        
+        <li class="menu-item">  
+          <a class="menu-item-link" href="/categories/">  
+              
+              
+              Categories  
+              
+          </a>  
+        </li>  
+        
+        <li class="menu-item">  
+          <a class="menu-item-link" href="/about/">  
+              
+              
+              About  
+              
+          </a>  
+        </li>  
+        
+    </ul>  
+    
+</nav>  
+
+    </header>
+    <main id="main" class="main">
+      <div class="content-wrapper">
+        <div id="content" class="content">
+          <article class="post">
+  <header class="post-header">
+    <h1 class="post-title">
+      
+      nest-分片上传
+      
+    </h1>
+
+    <div class="post-meta">
+      <span class="post-time">
+        2024-02-22
+      </span>
+      
+      
+      
+    </div>
+  </header>
+
+  
+
+  <div class="post-content">
+    
+    <h3 id="后端代码"><a href="#后端代码" class="headerlink" title="后端代码"></a>后端代码</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> &#123;</span><br><span class="line">  <span class="title class_">Body</span>,</span><br><span class="line">  <span class="title class_">Controller</span>,</span><br><span class="line">  <span class="title class_">Get</span>,</span><br><span class="line">  <span class="title class_">Post</span>,</span><br><span class="line">  <span class="title class_">Query</span>,</span><br><span class="line">  <span class="title class_">UploadedFiles</span>,</span><br><span class="line">  <span class="title class_">UseInterceptors</span>,</span><br><span class="line">&#125; <span class="keyword">from</span> <span class="string">&#x27;@nestjs/common&#x27;</span>;</span><br><span class="line"><span class="keyword">import</span> &#123; <span class="title class_">AppService</span> &#125; <span class="keyword">from</span> <span class="string">&#x27;./app.service&#x27;</span>;</span><br><span class="line"><span class="keyword">import</span> &#123; <span class="title class_">FilesInterceptor</span> &#125; <span class="keyword">from</span> <span class="string">&#x27;@nestjs/platform-express&#x27;</span>;</span><br><span class="line"><span class="keyword">import</span> * <span class="keyword">as</span> fs <span class="keyword">from</span> <span class="string">&#x27;fs&#x27;</span>;</span><br><span class="line"></span><br><span class="line">@<span class="title class_">Controller</span>()</span><br><span class="line"><span class="keyword">export</span> <span class="keyword">class</span> <span class="title class_">AppController</span> &#123;</span><br><span class="line">  <span class="title function_">constructor</span>(<span class="params">private readonly appService: AppService</span>) &#123;&#125;</span><br><span class="line"></span><br><span class="line">  @<span class="title class_">Get</span>()</span><br><span class="line">  <span class="title function_">getHello</span>(): string &#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="variable language_">this</span>.<span class="property">appService</span>.<span class="title function_">getHello</span>();</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  @<span class="title class_">Post</span>(<span class="string">&#x27;upload&#x27;</span>)</span><br><span class="line">  @<span class="title class_">UseInterceptors</span>(<span class="title class_">FilesInterceptor</span>(<span class="string">&#x27;files&#x27;</span>, <span class="number">20</span>, &#123; <span class="attr">dest</span>: <span class="string">&#x27;uploads&#x27;</span> &#125;))</span><br><span class="line">  <span class="title function_">uploadFiles</span>(<span class="params">@UploadedFiles() files: <span class="built_in">Array</span>&lt;any&gt;, @Body() body: any</span>) &#123;</span><br><span class="line">    <span class="keyword">const</span> fileName = body.<span class="property">name</span>.<span class="title function_">match</span>(<span class="regexp">/(.+)\-\d+$/</span>)[<span class="number">1</span>];</span><br><span class="line"></span><br><span class="line">    <span class="keyword">const</span> chunkDir = <span class="string">&#x27;uploads/chunks_&#x27;</span> + fileName;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">if</span> (!fs.<span class="title function_">existsSync</span>(chunkDir)) &#123;</span><br><span class="line">      fs.<span class="title function_">mkdirSync</span>(chunkDir);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    fs.<span class="title function_">cpSync</span>(files[<span class="number">0</span>].<span class="property">path</span>, chunkDir + <span class="string">&#x27;/&#x27;</span> + body.<span class="property">name</span>);</span><br><span class="line">    fs.<span class="title function_">rmSync</span>(files[<span class="number">0</span>].<span class="property">path</span>);</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  @<span class="title class_">Get</span>(<span class="string">&#x27;merge&#x27;</span>)</span><br><span class="line">  <span class="title function_">merge</span>(<span class="params">@Query(<span class="string">&#x27;name&#x27;</span>) name: string</span>) &#123;</span><br><span class="line">    <span class="keyword">const</span> chunkDir = <span class="string">&#x27;uploads/chunks_&#x27;</span> + name;</span><br><span class="line">    <span class="keyword">const</span> files = fs.<span class="title function_">readdirSync</span>(chunkDir);</span><br><span class="line"></span><br><span class="line">    files.<span class="title function_">sort</span>(<span class="function">(<span class="params">a: string, b: string</span>) =&gt;</span> &#123;</span><br><span class="line">      <span class="keyword">const</span> idxA = <span class="built_in">parseInt</span>(a.<span class="title function_">split</span>(<span class="string">&#x27;-&#x27;</span>).<span class="title function_">pop</span>());</span><br><span class="line">      <span class="keyword">const</span> idxB = <span class="built_in">parseInt</span>(b.<span class="title function_">split</span>(<span class="string">&#x27;-&#x27;</span>).<span class="title function_">pop</span>());</span><br><span class="line">      <span class="keyword">return</span> idxA - idxB;</span><br><span class="line">    &#125;);</span><br><span class="line"></span><br><span class="line">    <span class="keyword">let</span> count = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">let</span> startPos = <span class="number">0</span>;</span><br><span class="line"></span><br><span class="line">    files.<span class="title function_">map</span>(<span class="function">(<span class="params">f</span>) =&gt;</span> &#123;</span><br><span class="line">      <span class="keyword">const</span> filePath = chunkDir + <span class="string">&#x27;/&#x27;</span> + f;</span><br><span class="line">      <span class="keyword">const</span> stream = fs.<span class="title function_">createReadStream</span>(filePath);</span><br><span class="line">      stream</span><br><span class="line">        .<span class="title function_">pipe</span>(fs.<span class="title function_">createWriteStream</span>(<span class="string">&#x27;uploads/&#x27;</span> + name, &#123; <span class="attr">start</span>: startPos &#125;))</span><br><span class="line">        .<span class="title function_">on</span>(<span class="string">&#x27;finish&#x27;</span>, <span class="function">() =&gt;</span> &#123;</span><br><span class="line">          count++;</span><br><span class="line">          <span class="keyword">if</span> (count === files.<span class="property">length</span>) &#123;</span><br><span class="line">            fs.<span class="title function_">rm</span>(</span><br><span class="line">              chunkDir,</span><br><span class="line">              &#123;</span><br><span class="line">                <span class="attr">recursive</span>: <span class="literal">true</span>,</span><br><span class="line">              &#125;,</span><br><span class="line">              <span class="function">() =&gt;</span> &#123;&#125;,</span><br><span class="line">            );</span><br><span class="line">          &#125;</span><br><span class="line">        &#125;);</span><br><span class="line"></span><br><span class="line">      startPos += fs.<span class="title function_">statSync</span>(filePath).<span class="property">size</span>;</span><br><span class="line">    &#125;);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<h3 id="前端代码"><a href="#前端代码" class="headerlink" title="前端代码"></a>前端代码</h3><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;!DOCTYPE <span class="keyword">html</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">html</span> <span class="attr">lang</span>=<span class="string">&quot;en&quot;</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">head</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">meta</span> <span class="attr">charset</span>=<span class="string">&quot;UTF-8&quot;</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">meta</span> <span class="attr">http-equiv</span>=<span class="string">&quot;X-UA-Compatible&quot;</span> <span class="attr">content</span>=<span class="string">&quot;IE=edge&quot;</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">meta</span> <span class="attr">name</span>=<span class="string">&quot;viewport&quot;</span> <span class="attr">content</span>=<span class="string">&quot;width=device-width, initial-scale=1.0&quot;</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">title</span>&gt;</span>Document<span class="tag">&lt;/<span class="name">title</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">script</span> <span class="attr">src</span>=<span class="string">&quot;https://unpkg.com/axios@0.24.0/dist/axios.min.js&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">head</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">body</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">input</span> <span class="attr">id</span>=<span class="string">&quot;fileInput&quot;</span> <span class="attr">type</span>=<span class="string">&quot;file&quot;</span> <span class="attr">multiple</span> /&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">script</span>&gt;</span><span class="language-javascript"></span></span><br><span class="line"><span class="language-javascript">    <span class="keyword">const</span> fileInput = <span class="variable language_">document</span>.<span class="title function_">querySelector</span>(<span class="string">&#x27;#fileInput&#x27;</span>)</span></span><br><span class="line"><span class="language-javascript">    <span class="keyword">const</span> chunkSize = <span class="number">20</span> * <span class="number">1024</span></span></span><br><span class="line"><span class="language-javascript"></span></span><br><span class="line"><span class="language-javascript">    fileInput.<span class="property">onchange</span> = <span class="keyword">async</span> <span class="keyword">function</span> (<span class="params"></span>) &#123;</span></span><br><span class="line"><span class="language-javascript">      <span class="keyword">const</span> file = fileInput.<span class="property">files</span>[<span class="number">0</span>]</span></span><br><span class="line"><span class="language-javascript">      <span class="variable language_">console</span>.<span class="title function_">log</span>(file);</span></span><br><span class="line"><span class="language-javascript"></span></span><br><span class="line"><span class="language-javascript">      <span class="keyword">const</span> chunks = []</span></span><br><span class="line"><span class="language-javascript">      <span class="keyword">let</span> startPos = <span class="number">0</span></span></span><br><span class="line"><span class="language-javascript">      <span class="keyword">while</span> (startPos &lt; file.<span class="property">size</span>) &#123;</span></span><br><span class="line"><span class="language-javascript">        chunks.<span class="title function_">push</span>(file.<span class="title function_">slice</span>(startPos, startPos + chunkSize))</span></span><br><span class="line"><span class="language-javascript">        startPos += chunkSize</span></span><br><span class="line"><span class="language-javascript">      &#125;</span></span><br><span class="line"><span class="language-javascript"></span></span><br><span class="line"><span class="language-javascript">      <span class="keyword">const</span> randomStr = <span class="title class_">Math</span>.<span class="title function_">random</span>().<span class="title function_">toString</span>().<span class="title function_">slice</span>(<span class="number">2</span>, <span class="number">8</span>)</span></span><br><span class="line"><span class="language-javascript">      <span class="keyword">const</span> nextFileName = randomStr + <span class="string">&#x27;_&#x27;</span> + file.<span class="property">name</span></span></span><br><span class="line"><span class="language-javascript"></span></span><br><span class="line"><span class="language-javascript">      <span class="keyword">const</span> task = []</span></span><br><span class="line"><span class="language-javascript"></span></span><br><span class="line"><span class="language-javascript">      chunks.<span class="title function_">map</span>(<span class="function">(<span class="params">chunk, index</span>) =&gt;</span> &#123;</span></span><br><span class="line"><span class="language-javascript">        <span class="keyword">const</span> data = <span class="keyword">new</span> <span class="title class_">FormData</span>()</span></span><br><span class="line"><span class="language-javascript">        data.<span class="title function_">set</span>(<span class="string">&#x27;name&#x27;</span>, nextFileName + <span class="string">&#x27;-&#x27;</span> + index)</span></span><br><span class="line"><span class="language-javascript">        data.<span class="title function_">append</span>(<span class="string">&#x27;files&#x27;</span>, chunk)</span></span><br><span class="line"><span class="language-javascript">        task.<span class="title function_">push</span>(axios.<span class="title function_">post</span>(<span class="string">&#x27;http://localhost:3000/upload&#x27;</span>, data))</span></span><br><span class="line"><span class="language-javascript">      &#125;)</span></span><br><span class="line"><span class="language-javascript"></span></span><br><span class="line"><span class="language-javascript">      <span class="keyword">await</span> <span class="title class_">Promise</span>.<span class="title function_">all</span>(task)</span></span><br><span class="line"><span class="language-javascript">      axios.<span class="title function_">get</span>(<span class="string">&#x27;http://localhost:3000/merge?name=&#x27;</span> + nextFileName)</span></span><br><span class="line"><span class="language-javascript"></span></span><br><span class="line"><span class="language-javascript"></span></span><br><span class="line"><span class="language-javascript">    &#125;</span></span><br><span class="line"><span class="language-javascript">  </span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">body</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;/<span class="name">html</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+
+    
+  </div>
+
+  
+  <!-- Post Copyright -->
+
+    
+
+  
+
+  
+  <footer class="post-footer">
+    
+    <div class="post-tags">
+      
+      <a href="/tags/nest/">nest</a>
+      
+    </div>
+    
+      
+  <nav class="post-nav">  
+      
+      
+      <a class="next" href="/2024/02/06/Golang-kratos-examples-config/">  
+        <span class="next-text nav-default">Golang-kratos-examples-config</span>  
+        <span class="prev-text nav-mobile">Next</span>  
+        <i class="iconfont icon-right"></i>  
+      </a>  
+      
+  </nav>  
+  
+
+  </footer>
+  
+
+</article>
+        </div>
+          
+  <div class="comments" id="comments">  
+      
+  </div>  
+  
+
+      </div>
+    </main>
+    <footer id="footer" class="footer">
+      <!-- Social Links -->
+
+<div class="social-links">
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  <a target="_blank" rel="noopener" href="https://github.com/lucyanddarlin" class="iconfont icon-github" title="github"></a>
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+
+  
+  
+  <a href="/atom.xml" class="iconfont icon-rss" title="rss"></a>
+  
+</div>
+
+
+
+<div class="copyright">
+  <span class="power-by">
+    Powered by <a class="hexo-link" target="_blank" rel="noopener" href="https://hexo.io/">Hexo</a>
+  </span>
+  <span class="division">|</span>
+  <span class="theme-info">
+    Theme -
+    <a class="theme-link" target="_blank" rel="noopener" href="https://github.com/zeed-w-beez/hexo-theme-even">Even</a>
+  </span>
+  <span class="division">|</span>
+  <span class="hosting-info">
+    footer.hosting
+  </span>
+
+  <span class="copyright-year">
+    <span>
+      
+      &copy;
+      
+      2024      
+    </span>
+
+    <span class="heart">
+      <i class="iconfont icon-heart"></i>
+    </span>
+
+    <span class="author">Lucy</span>
+  </span>
+
+</div>
+    </footer>
+    <div class="back-to-top" id="back-to-top"> <i class="iconfont icon-up"></i> </div>
+  </div>
+    
+    
+    
+    
+    
+    
+    
+  
+
+  
+
+
+
+
+
+
+
+<script type="text/javascript" src="/lib/jquery"></script>
+
+
+
+<script type="text/javascript" src="/lib/slideout"></script>
+
+
+
+<script type="text/javascript" src="/lib/fancybox"></script>
+
+
+
+  <script type="text/javascript" src="/js/src/even.js?v=3.0.0"></script>
+</body>
+
+</html>
